@@ -1,0 +1,123 @@
+@use '../../../../styles/variables' as *;
+@use '../../../../styles/mixins' as *;
+
+// =============================================================================
+// NAVBAR
+// Sticky header — blends with page background, no visible chrome.
+// On mobile: logo left, [get started] + [toggle] right — all fits comfortably.
+// =============================================================================
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-nav;
+  background-color: var(--color-bg);
+  // Smooth background transition when theme toggles
+  transition: background-color $transition-slow;
+}
+
+.nav {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+
+  @include respond-to('md') {
+    height: 64px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo — Poxe font, -2% letter spacing (per design spec)
+// -----------------------------------------------------------------------------
+
+.logo {
+  font-family: $font-heading;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  line-height: 1;
+  // Prevent logo from shrinking on small screens
+  flex-shrink: 0;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Right-side actions
+// -----------------------------------------------------------------------------
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+// "get started" CTA — filled pill, inverts automatically with theme
+.cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px $space-2;
+  background-color: var(--color-text-primary);
+  color: var(--color-bg);
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-full;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity $transition-fast;
+
+  &:hover {
+    opacity: 0.78;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// Theme toggle — icon-only circular button
+.themeToggle {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: $radius-full;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+  transition: background-color $transition-fast;
+
+  svg {
+    display: block;
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: var(--color-border);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Mobile — hide "get started" text label on very small screens,
+// keep the icon-only toggle always visible
+// -----------------------------------------------------------------------------
+
+@media (max-width: #{$bp-sm - 1px}) {
+  .cta {
+    // Slightly reduce horizontal padding on tiny screens
+    padding-inline: $space-1 + 0.25rem; // ~12px
+    font-size: $font-size-xs;
+  }
+}

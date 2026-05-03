@@ -1,28 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "../styles/globals.scss";
 
 // =============================================================================
 // FONTS
-//
 // Body:    Inter (Google Font)
-// Heading: Poke (custom OTF) — PENDING font file
-//
-// To activate Poke:
-//   1. Place Poke.otf at src/app/fonts/Poke.otf
-//   2. Replace the Playfair_Display import with:
-//        import localFont from "next/font/local"
-//        const poke = localFont({
-//          src: "./fonts/Poke.otf",
-//          variable: "--font-heading",
-//          display: "swap",
-//          preload: false,
-//          fallback: ["Georgia", "Times New Roman", "serif"],
-//        })
-//   3. Swap `playfairDisplay.variable` → `poke.variable` in the <html> className
+// Heading: Poxe (custom OTF at src/app/fonts/poxe.otf)
+//          Used for the logo and display headings at -2% letter spacing
 // =============================================================================
 
-// Primary body font — preloaded (drives LCP)
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500"],
@@ -31,12 +18,10 @@ const inter = Inter({
   fallback: ["system-ui", "Arial", "sans-serif"],
 });
 
-// TEMPORARY heading placeholder — replace with Poke once OTF is provided
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
+const poxe = localFont({
+  src: "./fonts/poxe.otf",
   variable: "--font-heading",
+  display: "swap",
   preload: false,
   fallback: ["Georgia", "Times New Roman", "serif"],
 });
@@ -187,8 +172,20 @@ const jsonLd = {
 };
 
 // =============================================================================
+// THEME INIT SCRIPT
+// Injected into <head> as a blocking script — runs before any paint so there
+// is no flash of the wrong theme. Reads localStorage first, falls back to
+// prefers-color-scheme. Uses 'cl-theme' as the storage key.
+// Safe: 'unsafe-inline' is present in script-src CSP (next.config.ts).
+// =============================================================================
+
+const themeInitScript = `(function(){try{var t=localStorage.getItem('cl-theme');var d=t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',d);}catch(e){}})();`;
+
+// =============================================================================
 // ROOT LAYOUT
 // =============================================================================
+
+import Navbar from "./_components/(root)/Navbar/Navbar";
 
 export default function RootLayout({
   children,
@@ -196,15 +193,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // suppressHydrationWarning: data-theme is set by the inline script before
+    // React hydrates, so the attribute value differs between server and client.
+    // This suppresses the hydration mismatch warning for the <html> element only.
     <html
       lang="en-AU"
-      className={`${inter.variable} ${playfairDisplay.variable}`}
+      suppressHydrationWarning
+      className={`${inter.variable} ${poxe.variable}`}
     >
+      <head>
+        {/* Blocking theme script — must be first in <head> to prevent FOUC */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         {/* Skip-to-main-content — first focusable element, WCAG 2.4.1 */}
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+
+        <Navbar />
 
         {children}
 
