@@ -5,38 +5,24 @@
 
 // -----------------------------------------------------------------------------
 // Colours
-// Warm, earthy palette inspired by clay, earth, and ceramics
-// PLACEHOLDER: Swap once Figma colours are confirmed
+// Only 4 brand colors exist on this entire site. Every UI element is derived
+// from these 4 using opacity/alpha — no additional hues are introduced.
+//
+// These SCSS variables are compile-time only. Anything that changes between
+// light and dark themes must use CSS custom properties (see globals.scss).
 // -----------------------------------------------------------------------------
 
-// Backgrounds
-$color-bg:           #F7F3EE; // warm parchment — main page background
-$color-surface:      #FDFBF8; // near-white with warmth — cards, panels
-$color-surface-alt:  #F2EAE0; // tinted warm surface — alternate sections
+// Light theme background
+$color-warm-light:  #FDF4ED;
 
-// Brand / Accent
-$color-clay:         #B5622D; // terracotta — primary accent
-$color-clay-light:   #D9956A; // mid terracotta — hover states, highlights
-$color-clay-pale:    #F0DDD0; // very pale terracotta — backgrounds, badges
+// Dark theme background
+$color-warm-dark:   #2A1101;
 
-// Supporting
-$color-sage:         #7A9B7C; // muted sage green — secondary accent
-$color-sand:         #D4C4B0; // warm sand — dividers, subtle backgrounds
+// Near-black — primary text on light bg, dark surfaces on dark bg
+$color-base-dark:   #252422;
 
-// Text
-$color-text-primary:   #261A14; // deep warm brown — headings, body
-$color-text-secondary: #6B5448; // medium warm brown — subtext, captions
-$color-text-muted:     #9C8679; // warm muted — placeholders, disabled
-
-// Borders
-$color-border:       #DDD0C6; // warm light border
-$color-border-strong:#C4B4A8; // stronger border for emphasis
-
-// Utility
-$color-white:        #FFFFFF;
-$color-black:        #000000;
-$color-error:        #C0392B;
-$color-success:      #27AE60;
+// Near-white — primary text on dark bg, light surfaces on light bg
+$color-base-light:  #F5F5F5;
 
 // -----------------------------------------------------------------------------
 // Typography
@@ -124,14 +110,16 @@ $radius-2xl:  32px;
 $radius-full: 9999px;
 
 // -----------------------------------------------------------------------------
-// Shadows — warm-toned, never cold grey
+// Shadows
+// Derived from $color-base-dark (#252422 = rgb 37 36 34).
+// Used in light theme; in dark theme shadows are imperceptible and that's fine.
 // -----------------------------------------------------------------------------
 
-$shadow-sm:    0 1px 3px rgba(38, 26, 20, 0.06), 0 1px 2px rgba(38, 26, 20, 0.04);
-$shadow-md:    0 4px 12px rgba(38, 26, 20, 0.08), 0 2px 4px rgba(38, 26, 20, 0.05);
-$shadow-lg:    0 8px 24px rgba(38, 26, 20, 0.10), 0 4px 8px rgba(38, 26, 20, 0.06);
-$shadow-xl:    0 16px 48px rgba(38, 26, 20, 0.12), 0 8px 16px rgba(38, 26, 20, 0.07);
-$shadow-glass: 0 8px 32px rgba(38, 26, 20, 0.08);
+$shadow-sm:    0 1px 3px rgba(37, 36, 34, 0.06), 0 1px 2px rgba(37, 36, 34, 0.04);
+$shadow-md:    0 4px 12px rgba(37, 36, 34, 0.08), 0 2px 4px rgba(37, 36, 34, 0.05);
+$shadow-lg:    0 8px 24px rgba(37, 36, 34, 0.10), 0 4px 8px rgba(37, 36, 34, 0.06);
+$shadow-xl:    0 16px 48px rgba(37, 36, 34, 0.12), 0 8px 16px rgba(37, 36, 34, 0.07);
+$shadow-glass: 0 8px 32px rgba(37, 36, 34, 0.08);
 
 // -----------------------------------------------------------------------------
 // Transitions

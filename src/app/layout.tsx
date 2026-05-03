@@ -132,7 +132,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#B5622D", // terracotta — update when brand colour is confirmed
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FDF4ED" },
+    { media: "(prefers-color-scheme: dark)",  color: "#2A1101" },
+  ],
 };
 
 // =============================================================================

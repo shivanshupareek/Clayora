@@ -81,21 +81,23 @@
 
 // -----------------------------------------------------------------------------
 // Glassmorphism
+// Background and border use CSS custom properties so they respond to theme.
+// --color-glass-bg and --color-glass-border are defined in globals.scss.
 // -----------------------------------------------------------------------------
 
-@mixin glass($bg-opacity: 0.72, $blur: 14px) {
-  background: rgba(253, 251, 248, $bg-opacity);
+@mixin glass($blur: 14px) {
+  background: var(--color-glass-bg);
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
-  border: 1px solid rgba($color-border, 0.5);
+  border: 1px solid var(--color-glass-border);
 }
 
 // Stronger glass for cards on dark/textured backgrounds
-@mixin glass-strong($bg-opacity: 0.85, $blur: 20px) {
-  background: rgba(253, 251, 248, $bg-opacity);
+@mixin glass-strong($blur: 20px) {
+  background: var(--color-glass-bg-strong);
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
-  border: 1px solid rgba($color-border, 0.6);
+  border: 1px solid var(--color-glass-border);
   box-shadow: $shadow-glass;
 }
 
@@ -103,9 +105,9 @@
 // Accessibility
 // -----------------------------------------------------------------------------
 
-// Focus ring — used on every interactive element
+// Focus ring — uses text-primary so it's always high-contrast in both themes
 @mixin focus-ring {
-  outline: 2px solid $color-clay;
+  outline: 2px solid var(--color-text-primary);
   outline-offset: 3px;
   border-radius: $radius-sm;
 }
@@ -149,15 +151,15 @@
   font-weight: $weight;
   line-height: $line-height-tight;
   letter-spacing: $tracking-tight;
-  color: $color-text-primary;
+  color: var(--color-text-primary);
 }
 
 // Body text shorthand
-@mixin body-text($size: $font-size-base, $color: $color-text-secondary) {
+@mixin body-text($size: $font-size-base) {
   font-family: $font-body;
   font-size: $size;
   line-height: $line-height-relaxed;
-  color: $color;
+  color: var(--color-text-secondary);
 }
 
 // -----------------------------------------------------------------------------
