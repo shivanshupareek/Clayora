@@ -1,0 +1,184 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset';
+
+// =============================================================================
+// GLOBALS
+// Root styles, CSS custom properties, typography baseline, utility classes
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// CSS Custom Properties
+// Exposed on :root so they're accessible in JS and inline styles when needed
+// -----------------------------------------------------------------------------
+
+:root {
+  // Colours
+  --color-bg:             #{$color-bg};
+  --color-surface:        #{$color-surface};
+  --color-surface-alt:    #{$color-surface-alt};
+  --color-clay:           #{$color-clay};
+  --color-clay-light:     #{$color-clay-light};
+  --color-clay-pale:      #{$color-clay-pale};
+  --color-sage:           #{$color-sage};
+  --color-sand:           #{$color-sand};
+  --color-text-primary:   #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted:     #{$color-text-muted};
+  --color-border:         #{$color-border};
+  --color-border-strong:  #{$color-border-strong};
+  --color-white:          #{$color-white};
+  --color-error:          #{$color-error};
+  --color-success:        #{$color-success};
+
+  // Spacing
+  --space-1:  #{$space-1};
+  --space-2:  #{$space-2};
+  --space-3:  #{$space-3};
+  --space-4:  #{$space-4};
+  --space-5:  #{$space-5};
+  --space-6:  #{$space-6};
+  --space-8:  #{$space-8};
+  --space-10: #{$space-10};
+  --space-12: #{$space-12};
+  --space-16: #{$space-16};
+  --space-20: #{$space-20};
+  --space-24: #{$space-24};
+
+  // Layout
+  --max-content-width: #{$max-content-width};
+
+  // Shadows
+  --shadow-sm:    #{$shadow-sm};
+  --shadow-md:    #{$shadow-md};
+  --shadow-lg:    #{$shadow-lg};
+  --shadow-xl:    #{$shadow-xl};
+  --shadow-glass: #{$shadow-glass};
+
+  // Border radius
+  --radius-sm:   #{$radius-sm};
+  --radius-md:   #{$radius-md};
+  --radius-lg:   #{$radius-lg};
+  --radius-xl:   #{$radius-xl};
+  --radius-2xl:  #{$radius-2xl};
+  --radius-full: #{$radius-full};
+
+  // Transitions
+  --transition-fast:   #{$transition-fast};
+  --transition-base:   #{$transition-base};
+  --transition-slow:   #{$transition-slow};
+  --transition-smooth: #{$transition-smooth};
+}
+
+// -----------------------------------------------------------------------------
+// HTML / Body baseline
+// -----------------------------------------------------------------------------
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  background-color: $color-bg;
+  color: $color-text-primary;
+  font-family: $font-body, system-ui, -apple-system, sans-serif;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+// -----------------------------------------------------------------------------
+// Skip-to-main-content link (accessibility — WCAG 2.4.1)
+// First focusable element in <body>, visually hidden until focused
+// -----------------------------------------------------------------------------
+
+.skip-link {
+  @include visually-hidden;
+
+  &:focus-visible {
+    position: fixed;
+    top: $space-2;
+    left: $space-2;
+    z-index: $z-toast;
+    display: inline-flex;
+    align-items: center;
+    padding: $space-1 $space-2;
+    background: $color-clay;
+    color: $color-white;
+    font-family: $font-body, system-ui, sans-serif;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    border-radius: $radius-md;
+    text-decoration: none;
+    width: auto;
+    height: auto;
+    clip: auto;
+    white-space: normal;
+    margin: 0;
+    overflow: visible;
+    box-shadow: $shadow-md;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Global focus visible — safety net; components must also declare their own
+// -----------------------------------------------------------------------------
+
+:focus-visible {
+  @include focus-ring;
+}
+
+// -----------------------------------------------------------------------------
+// Text selection
+// -----------------------------------------------------------------------------
+
+::selection {
+  background: $color-clay-pale;
+  color: $color-text-primary;
+}
+
+// -----------------------------------------------------------------------------
+// Headings — font family and vertical rhythm defaults
+// -----------------------------------------------------------------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading, Georgia, 'Times New Roman', serif;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  letter-spacing: $tracking-tight;
+  color: $color-text-primary;
+}
+
+// -----------------------------------------------------------------------------
+// Images
+// -----------------------------------------------------------------------------
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// -----------------------------------------------------------------------------
+// Reduced motion — respect user preference
+// Framer Motion also respects this, but belt-and-suspenders for CSS transitions
+// -----------------------------------------------------------------------------
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

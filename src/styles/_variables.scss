@@ -1,0 +1,155 @@
+// =============================================================================
+// VARIABLES
+// ClayLabs design system — single source of truth for all tokens
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Colours
+// Warm, earthy palette inspired by clay, earth, and ceramics
+// PLACEHOLDER: Swap once Figma colours are confirmed
+// -----------------------------------------------------------------------------
+
+// Backgrounds
+$color-bg:           #F7F3EE; // warm parchment — main page background
+$color-surface:      #FDFBF8; // near-white with warmth — cards, panels
+$color-surface-alt:  #F2EAE0; // tinted warm surface — alternate sections
+
+// Brand / Accent
+$color-clay:         #B5622D; // terracotta — primary accent
+$color-clay-light:   #D9956A; // mid terracotta — hover states, highlights
+$color-clay-pale:    #F0DDD0; // very pale terracotta — backgrounds, badges
+
+// Supporting
+$color-sage:         #7A9B7C; // muted sage green — secondary accent
+$color-sand:         #D4C4B0; // warm sand — dividers, subtle backgrounds
+
+// Text
+$color-text-primary:   #261A14; // deep warm brown — headings, body
+$color-text-secondary: #6B5448; // medium warm brown — subtext, captions
+$color-text-muted:     #9C8679; // warm muted — placeholders, disabled
+
+// Borders
+$color-border:       #DDD0C6; // warm light border
+$color-border-strong:#C4B4A8; // stronger border for emphasis
+
+// Utility
+$color-white:        #FFFFFF;
+$color-black:        #000000;
+$color-error:        #C0392B;
+$color-success:      #27AE60;
+
+// -----------------------------------------------------------------------------
+// Typography
+// PLACEHOLDER: Replace with Figma-specified fonts when designs are shared
+// -----------------------------------------------------------------------------
+
+$font-heading: var(--font-heading); // set via next/font in layout.tsx
+$font-body:    var(--font-body);    // set via next/font in layout.tsx
+
+// Font sizes — modular scale
+$font-size-xs:   0.75rem;   // 12px
+$font-size-sm:   0.875rem;  // 14px
+$font-size-base: 1rem;      // 16px
+$font-size-md:   1.125rem;  // 18px
+$font-size-lg:   1.25rem;   // 20px
+$font-size-xl:   1.5rem;    // 24px
+$font-size-2xl:  2rem;      // 32px
+$font-size-3xl:  2.5rem;    // 40px
+$font-size-4xl:  3rem;      // 48px
+$font-size-5xl:  3.75rem;   // 60px
+$font-size-6xl:  4.5rem;    // 72px
+
+// Font weights
+$font-weight-regular:  400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+
+// Line heights
+$line-height-tight:   1.2;
+$line-height-snug:    1.35;
+$line-height-normal:  1.5;
+$line-height-relaxed: 1.65;
+$line-height-loose:   1.8;
+
+// Letter spacing
+$tracking-tight:  -0.02em;
+$tracking-normal:  0;
+$tracking-wide:    0.04em;
+$tracking-wider:   0.08em;
+
+// -----------------------------------------------------------------------------
+// Spacing — strict 8px scale
+// -----------------------------------------------------------------------------
+
+$space-1:  0.5rem;   // 8px
+$space-2:  1rem;     // 16px
+$space-3:  1.5rem;   // 24px
+$space-4:  2rem;     // 32px
+$space-5:  2.5rem;   // 40px
+$space-6:  3rem;     // 48px
+$space-8:  4rem;     // 64px
+$space-10: 5rem;     // 80px
+$space-12: 6rem;     // 96px
+$space-16: 8rem;     // 128px
+$space-20: 10rem;    // 160px
+$space-24: 12rem;    // 192px
+
+// -----------------------------------------------------------------------------
+// Layout
+// -----------------------------------------------------------------------------
+
+$max-content-width: 1144px; // hard constraint — CLAUDE.md
+
+// -----------------------------------------------------------------------------
+// Breakpoints
+// -----------------------------------------------------------------------------
+
+$bp-xs:  320px;
+$bp-sm:  480px;
+$bp-md:  768px;
+$bp-lg:  1024px;
+$bp-xl:  1280px;
+$bp-2xl: 1536px;
+
+// -----------------------------------------------------------------------------
+// Border radius
+// -----------------------------------------------------------------------------
+
+$radius-sm:   4px;
+$radius-md:   8px;
+$radius-lg:   16px;
+$radius-xl:   24px;
+$radius-2xl:  32px;
+$radius-full: 9999px;
+
+// -----------------------------------------------------------------------------
+// Shadows — warm-toned, never cold grey
+// -----------------------------------------------------------------------------
+
+$shadow-sm:    0 1px 3px rgba(38, 26, 20, 0.06), 0 1px 2px rgba(38, 26, 20, 0.04);
+$shadow-md:    0 4px 12px rgba(38, 26, 20, 0.08), 0 2px 4px rgba(38, 26, 20, 0.05);
+$shadow-lg:    0 8px 24px rgba(38, 26, 20, 0.10), 0 4px 8px rgba(38, 26, 20, 0.06);
+$shadow-xl:    0 16px 48px rgba(38, 26, 20, 0.12), 0 8px 16px rgba(38, 26, 20, 0.07);
+$shadow-glass: 0 8px 32px rgba(38, 26, 20, 0.08);
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+
+$transition-fast:   150ms ease;
+$transition-base:   250ms ease;
+$transition-slow:   400ms ease;
+$transition-smooth: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+
+// -----------------------------------------------------------------------------
+// Z-index scale
+// -----------------------------------------------------------------------------
+
+$z-below:   -1;
+$z-base:     0;
+$z-raised:   10;
+$z-overlay:  20;
+$z-modal:    30;
+$z-toast:    40;
+$z-nav:      50;
