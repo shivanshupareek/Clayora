@@ -1,26 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Moon, Sun } from "lucide-react";
 import styles from "./Navbar.module.scss";
 
 type Theme = "light" | "dark";
 
-export default function Navbar() {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+// Lazy initializer — reads the data-theme attribute already set by the
+// blocking script in <head>. Runs once on the client; returns "light" on
+// the server (SSR). No useEffect needed, no cascading re-render.
+function readThemeFromDOM(): Theme {
+  if (typeof window === "undefined") return "light";
+  return (
+    (document.documentElement.getAttribute("data-theme") as Theme) ?? "light"
+  );
+}
 
-  // On mount: read the theme already set by the blocking script in <head>.
-  // We read from the <html> attribute (not localStorage) so we stay in sync
-  // with whatever the init script resolved — avoids a double-read.
-  useEffect(() => {
-    const current =
-      (document.documentElement.getAttribute("data-theme") as Theme) ??
-      "light";
-    setTheme(current);
-    setMounted(true);
-  }, []);
+export default function Navbar() {
+  const [theme, setTheme] = useState<Theme>(readThemeFromDOM);
 
   const toggleTheme = () => {
     const next: Theme = theme === "light" ? "dark" : "light";
@@ -28,18 +26,22 @@ export default function Navbar() {
     document.documentElement.setAttribute("data-theme", next);
     try {
       localStorage.setItem("cl-theme", next);
-    } catch (_) {
-      // localStorage may be unavailable in private browsing — fail silently
+    } catch {
+      // localStorage unavailable in private browsing — fail silently
     }
   };
 
-  const isDark = mounted && theme === "dark";
+  const isDark = theme === "dark";
 
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Main navigation">
         {/* Logo — Poxe font, -2% letter spacing */}
-        <Link href="/" className={styles.logo} aria-label="ClayLabs — go to homepage">
+        <Link
+          href="/"
+          className={styles.logo}
+          aria-label="ClayLabs — go to homepage"
+        >
           ClayLabs
         </Link>
 
@@ -48,14 +50,16 @@ export default function Navbar() {
             get started
           </a>
 
+          {/* suppressHydrationWarning: server renders "light" default; client
+              reads the real data-theme set by the init script. The aria-label
+              and icon may differ — this is intentional and cosmetically safe. */}
           <button
             type="button"
+            suppressHydrationWarning
             className={styles.themeToggle}
             onClick={toggleTheme}
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {/* Render Moon by default (matches light-mode server render).
-                After mount, switch to the correct icon for the active theme. */}
             {isDark ? (
               <Sun size={16} strokeWidth={1.5} aria-hidden="true" />
             ) : (
