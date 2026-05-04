@@ -37,8 +37,6 @@ Claylabs is a pottery teaching class in Australia which:
 
 - Warm pastel colours
 - Soft gradients
-- Glassmorphism (subtle)
-- Grain texture overlay
 - Elements should feel embedded, not floating
 
 ---
@@ -65,7 +63,7 @@ Claylabs is a pottery teaching class in Australia which:
 
 ## Layout & Responsiveness
 
-- **Max content width is 1144px** — nothing (except the footer) should exceed this
+- **Max content width is 1440px** — nothing (except the footer) should exceed this
 - This is a hard constraint for consistent layout across all screen sizes
 - Smooth and pixel-perfect responsiveness is a top priority on every component
 - Always test layout logic across the full breakpoint range (320px → 1536px+)
