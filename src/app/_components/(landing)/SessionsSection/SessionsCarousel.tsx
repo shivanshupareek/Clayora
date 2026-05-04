@@ -45,22 +45,19 @@ const CARDS = [
   },
 ];
 
-const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
+const EASE: [number, number, number, number] = [0.56, 0, 0.44, 1];
 
 const variants = {
   enter: (dir: number) => ({
     x: dir > 0 ? "100%" : "-100%",
-    opacity: 0,
   }),
   center: {
     x: 0,
-    opacity: 1,
-    transition: { duration: 0.4, ease: EASE },
+    transition: { duration: 1.6, ease: EASE },
   },
   exit: (dir: number) => ({
     x: dir > 0 ? "-100%" : "100%",
-    opacity: 0,
-    transition: { duration: 0.4, ease: EASE },
+    transition: { duration: 1.6, ease: EASE },
   }),
 };
 
@@ -100,11 +97,11 @@ export default function SessionsCarousel() {
     intervalRef.current = setInterval(() => {
       setDirection(1);
       setCurrentGroup((g) => (g + 1) % totalGroups);
-    }, 5000);
+    }, 4000);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentGroup, totalGroups, isPaused]);
 
   function navigate(dir: 1 | -1) {
@@ -125,26 +122,26 @@ export default function SessionsCarousel() {
         <h2 id="sessions-heading" className={styles.heading}>
           Our pottery sessions
         </h2>
-        <div className={styles.controls}>
-          <button
-            className={styles.arrowBtn}
-            onClick={() => navigate(-1)}
-            aria-label="Previous group"
-          >
-            <ChevronLeft size={18} aria-hidden="true" focusable="false" />
-          </button>
-          <button
-            className={styles.arrowBtn}
-            onClick={() => navigate(1)}
-            aria-label="Next group"
-          >
-            <ChevronRight size={18} aria-hidden="true" focusable="false" />
-          </button>
-        </div>
+      </div>
+      <div className={styles.controls}>
+        <button
+          className={styles.arrowBtn}
+          onClick={() => navigate(-1)}
+          aria-label="Previous group"
+        >
+          <ChevronLeft size={16} aria-hidden="true" focusable="false" />
+        </button>
+        <button
+          className={styles.arrowBtn}
+          onClick={() => navigate(1)}
+          aria-label="Next group"
+        >
+          <ChevronRight size={16} aria-hidden="true" focusable="false" />
+        </button>
       </div>
 
       <div className={styles.track}>
-        <AnimatePresence mode="popLayout" custom={direction}>
+        <AnimatePresence mode="popLayout" custom={direction} initial={false}>
           <motion.div
             key={currentGroup}
             custom={direction}

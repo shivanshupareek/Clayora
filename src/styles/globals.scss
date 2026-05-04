@@ -1,6 +1,6 @@
-@use 'variables' as *;
-@use 'mixins' as *;
-@use 'reset';
+@use "variables" as *;
+@use "mixins" as *;
+@use "reset";
 
 // =============================================================================
 // GLOBALS
@@ -15,26 +15,26 @@
 
 @mixin dark-theme-tokens {
   // Backgrounds
-  --color-bg:               #{$color-warm-dark};
-  --color-surface:          rgba(245, 245, 245, 0.06);
-  --color-surface-tint:     rgba(245, 245, 245, 0.03);
+  --color-bg: #{$color-warm-dark};
+  --color-surface: rgba(245, 245, 245, 0.06);
+  --color-surface-tint: rgba(245, 245, 245, 0.03);
 
   // Text — derived from $color-base-light (#F5F5F5 = 245 245 245)
-  --color-text-primary:     #{$color-base-light};
-  --color-text-secondary:   rgba(245, 245, 245, 0.62);
-  --color-text-muted:       rgba(245, 245, 245, 0.38);
+  --color-text-primary: #{$color-base-light};
+  --color-text-secondary: rgba(245, 245, 245, 0.62);
+  --color-text-muted: rgba(245, 245, 245, 0.38);
 
   // Borders — derived from $color-base-light
-  --color-border:           rgba(245, 245, 245, 0.10);
-  --color-border-strong:    rgba(245, 245, 245, 0.20);
+  --color-border: rgba(245, 245, 245, 0.1);
+  --color-border-strong: rgba(245, 245, 245, 0.2);
 
   // Glassmorphism — bg uses $color-warm-dark (#2A1101 = 42 17 1)
-  --color-glass-bg:         rgba(42, 17, 1, 0.72);
-  --color-glass-bg-strong:  rgba(42, 17, 1, 0.88);
-  --color-glass-border:     rgba(245, 245, 245, 0.12);
+  --color-glass-bg: rgba(42, 17, 1, 0.72);
+  --color-glass-bg-strong: rgba(42, 17, 1, 0.88);
+  --color-glass-border: rgba(245, 245, 245, 0.12);
 
   // Selection
-  --color-selection-bg:     rgba(245, 245, 245, 0.15);
+  --color-selection-bg: rgba(245, 245, 245, 0.15);
 }
 
 // -----------------------------------------------------------------------------
@@ -46,43 +46,43 @@
 :root,
 [data-theme="light"] {
   // Backgrounds — derived from $color-warm-light (#FDF4ED)
-  --color-bg:               #{$color-warm-light};
-  --color-surface:          #{$color-base-light};
-  --color-surface-tint:     rgba(37, 36, 34, 0.03);
+  --color-bg: #{$color-warm-light};
+  --color-surface: #{$color-base-light};
+  --color-surface-tint: rgba(37, 36, 34, 0.03);
 
   // Text — derived from $color-base-dark (#252422 = 37 36 34)
-  --color-text-primary:     #{$color-base-dark};
-  --color-text-secondary:   rgba(37, 36, 34, 0.62);
-  --color-text-muted:       rgba(37, 36, 34, 0.38);
+  --color-text-primary: #{$color-base-dark};
+  --color-text-secondary: rgba(37, 36, 34, 0.62);
+  --color-text-muted: rgba(37, 36, 34, 0.38);
 
   // Borders — derived from $color-base-dark
-  --color-border:           rgba(37, 36, 34, 0.10);
-  --color-border-strong:    rgba(37, 36, 34, 0.20);
+  --color-border: rgba(37, 36, 34, 0.1);
+  --color-border-strong: rgba(37, 36, 34, 0.2);
 
   // Glassmorphism — bg uses $color-warm-light (#FDF4ED = 253 244 237)
-  --color-glass-bg:         rgba(253, 244, 237, 0.72);
-  --color-glass-bg-strong:  rgba(253, 244, 237, 0.88);
-  --color-glass-border:     rgba(37, 36, 34, 0.12);
+  --color-glass-bg: rgba(253, 244, 237, 0.72);
+  --color-glass-bg-strong: rgba(253, 244, 237, 0.88);
+  --color-glass-border: rgba(37, 36, 34, 0.12);
 
   // Selection
-  --color-selection-bg:     rgba(37, 36, 34, 0.10);
+  --color-selection-bg: rgba(37, 36, 34, 0.1);
 
   // ---- Static tokens (theme-invariant) ----
 
   // Raw brand colors — exposed for JS access (e.g. canvas, Three.js, charts)
-  --color-warm-light:       #{$color-warm-light};
-  --color-warm-dark:        #{$color-warm-dark};
-  --color-base-dark:        #{$color-base-dark};
-  --color-base-light:       #{$color-base-light};
+  --color-warm-light: #{$color-warm-light};
+  --color-warm-dark: #{$color-warm-dark};
+  --color-base-dark: #{$color-base-dark};
+  --color-base-light: #{$color-base-light};
 
   // Spacing
-  --space-1:  #{$space-1};
-  --space-2:  #{$space-2};
-  --space-3:  #{$space-3};
-  --space-4:  #{$space-4};
-  --space-5:  #{$space-5};
-  --space-6:  #{$space-6};
-  --space-8:  #{$space-8};
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-5: #{$space-5};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
   --space-10: #{$space-10};
   --space-12: #{$space-12};
   --space-16: #{$space-16};
@@ -93,24 +93,24 @@
   --max-content-width: #{$max-content-width};
 
   // Shadows
-  --shadow-sm:    #{$shadow-sm};
-  --shadow-md:    #{$shadow-md};
-  --shadow-lg:    #{$shadow-lg};
-  --shadow-xl:    #{$shadow-xl};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
   --shadow-glass: #{$shadow-glass};
 
   // Border radius
-  --radius-sm:   #{$radius-sm};
-  --radius-md:   #{$radius-md};
-  --radius-lg:   #{$radius-lg};
-  --radius-xl:   #{$radius-xl};
-  --radius-2xl:  #{$radius-2xl};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-2xl: #{$radius-2xl};
   --radius-full: #{$radius-full};
 
   // Transitions
-  --transition-fast:   #{$transition-fast};
-  --transition-base:   #{$transition-base};
-  --transition-slow:   #{$transition-slow};
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
   --transition-smooth: #{$transition-smooth};
 }
 
@@ -138,7 +138,11 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  font-family: $font-body, system-ui, -apple-system, sans-serif;
+  font-family:
+    $font-body,
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-size: $font-size-base;
   font-weight: $font-weight-regular;
   line-height: $line-height-normal;
@@ -146,7 +150,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100dvh;
   // Smooth background transition when theme toggles
-  transition: background-color $transition-slow, color $transition-slow;
+  transition:
+    background-color $transition-slow,
+    color $transition-slow;
 }
 
 // -----------------------------------------------------------------------------
@@ -209,7 +215,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-heading, Georgia, 'Times New Roman', serif;
+  font-family: $font-heading, Georgia, "Times New Roman", serif;
   font-weight: $font-weight-semibold;
   line-height: $line-height-tight;
   letter-spacing: $tracking-tight;
