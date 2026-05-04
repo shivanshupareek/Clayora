@@ -1,5 +1,5 @@
-@use '../../../../styles/variables' as *;
-@use '../../../../styles/mixins' as *;
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
 
 // =============================================================================
 // BookingSection
@@ -24,11 +24,11 @@
   color: var(--color-text-primary);
   margin-bottom: $space-12;
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     font-size: $font-size-5xl;
   }
 
-  @include respond-to('xl') {
+  @include respond-to("xl") {
     font-size: $font-size-6xl;
   }
 }
@@ -49,11 +49,11 @@
   grid-template-columns: 1fr;
   gap: $space-8;
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     grid-template-columns: 1fr 1fr;
   }
 
-  @include respond-to('lg') {
+  @include respond-to("lg") {
     grid-template-columns: 1fr 1fr 1fr;
     gap: $space-12;
   }
@@ -123,7 +123,7 @@
   grid-template-columns: 1fr;
   gap: $space-8;
 
-  @include respond-to('md') {
+  @include respond-to("md") {
     grid-template-columns: auto 1fr;
     align-items: start;
     gap: $space-12;
@@ -153,7 +153,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     right: $space-2;
     top: 50%;
@@ -180,7 +180,9 @@
   color: var(--color-text-primary);
   cursor: pointer;
   min-width: 90px;
-  transition: border-color $transition-base, opacity $transition-base;
+  transition:
+    border-color $transition-base,
+    opacity $transition-base;
 
   &:focus-visible {
     @include focus-ring;
@@ -222,9 +224,9 @@
 
   display: inline-flex;
   align-items: center;
-  gap: $space-2;
+  gap: $space-6;
   background-color: var(--color-text-primary);
-  border-radius: $radius-full;
+  border-radius: $radius-md;
   padding: $space-1;
   transition: opacity $transition-base;
 
@@ -246,7 +248,7 @@
 .btnLabel {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
-  border-radius: $radius-full;
+  border-radius: $radius-sm;
   padding: 7px $space-2;
   font-family: $font-body;
   font-size: $font-size-sm;

@@ -101,8 +101,8 @@ export default function SessionsCarousel() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentGroup, totalGroups, isPaused]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [currentGroup, totalGroups, isPaused]);
 
   function navigate(dir: 1 | -1) {
     setDirection(dir);
