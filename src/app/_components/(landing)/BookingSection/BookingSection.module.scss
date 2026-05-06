@@ -22,10 +22,11 @@
   line-height: $line-height-tight;
   letter-spacing: $tracking-tight;
   color: var(--color-text-primary);
-  margin-bottom: $space-12;
+  margin-bottom: $space-6; // mobile — 40% reduction from $space-12
 
   @include respond-to("md") {
     font-size: $font-size-5xl;
+    margin-bottom: $space-12;
   }
 
   @include respond-to("xl") {
@@ -40,17 +41,22 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: $space-10;
+  gap: $space-6; // mobile — 40% reduction from $space-10
+
+  @include respond-to("md") {
+    gap: $space-10;
+  }
 }
 
 // Row 1 — 3 equal columns
 .fieldsRow {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-8;
+  gap: $space-5; // mobile — 40% reduction from $space-8
 
   @include respond-to("md") {
     grid-template-columns: 1fr 1fr;
+    gap: $space-8;
   }
 
   @include respond-to("lg") {
@@ -121,7 +127,7 @@
 .scheduleRow {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $space-8;
+  gap: $space-5; // mobile — 40% reduction from $space-8
 
   @include respond-to("md") {
     grid-template-columns: auto 1fr;

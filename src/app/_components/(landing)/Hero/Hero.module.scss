@@ -91,20 +91,21 @@
   border-radius: $radius-sm;
 
   @include respond-to("sm") {
-    margin-inline: $space-4;
     height: 280px;
   }
 
   @include respond-to("md") {
-    margin-inline: $space-8;
+    margin-inline: $space-4;
     height: 380px;
   }
 
   @include respond-to("lg") {
+    margin-inline: $space-6;
     height: 400px;
   }
 
   @include respond-to("xl") {
+    margin-inline: $space-8;
     height: 420px;
   }
 }

@@ -20,15 +20,23 @@ const DAYS = [
 
 const TIMES = ["10:00am – 12:00pm", "06:00pm – 08:00pm"];
 
+const AU_PHONE_RE = /^(\+?61|0)(4\d{8}|[2-9]\d{8})$/;
+
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z
     .string()
     .min(1, "Email is required")
     .email("Enter a valid email address"),
-  phone: z.string().optional(),
-  day: z.string().optional(),
-  time: z.string().optional(),
+  phone: z
+    .string()
+    .min(1, "Phone number is required")
+    .refine(
+      (val) => AU_PHONE_RE.test(val.replace(/[\s.\-()]/g, "")),
+      "Enter a valid Australian phone number"
+    ),
+  day: z.string().min(1, "Please select a day"),
+  time: z.string().min(1, "Please select a time"),
   comments: z.string().optional(),
 });
 
@@ -57,9 +65,9 @@ export default function BookingSection() {
     const formData = new FormData();
     formData.set("name", values.name);
     formData.set("email", values.email);
-    if (values.phone) formData.set("phone", values.phone);
-    if (values.day) formData.set("day", values.day);
-    if (values.time) formData.set("time", values.time);
+    formData.set("phone", values.phone);
+    formData.set("day", values.day);
+    formData.set("time", values.time);
     if (values.comments) formData.set("comments", values.comments);
 
     const result = await submitBooking(formData);
@@ -142,12 +150,19 @@ export default function BookingSection() {
               <input
                 id="booking-phone"
                 type="tel"
-                placeholder="+61 123 456 789"
+                placeholder="+61 412 345 678"
                 autoComplete="tel"
                 className={styles.input}
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "booking-phone-error" : undefined}
                 disabled={isLoading}
                 {...register("phone")}
               />
+              {errors.phone && (
+                <p id="booking-phone-error" role="alert" className={styles.fieldError}>
+                  {errors.phone.message}
+                </p>
+              )}
             </div>
           </div>
 
@@ -162,6 +177,8 @@ export default function BookingSection() {
                     className={styles.select}
                     disabled={isLoading}
                     aria-label="Day of the week"
+                    aria-invalid={!!errors.day}
+                    aria-describedby={errors.day ? "booking-day-error" : undefined}
                     {...register("day")}
                   >
                     <option value="" disabled>
@@ -181,6 +198,8 @@ export default function BookingSection() {
                     className={styles.select}
                     disabled={isLoading}
                     aria-label="Preferred time slot"
+                    aria-invalid={!!errors.time}
+                    aria-describedby={errors.time ? "booking-time-error" : undefined}
                     {...register("time")}
                   >
                     <option value="" disabled>
@@ -194,6 +213,15 @@ export default function BookingSection() {
                   </select>
                 </div>
               </div>
+              {(errors.day || errors.time) && (
+                <p
+                  id={errors.day ? "booking-day-error" : "booking-time-error"}
+                  role="alert"
+                  className={styles.fieldError}
+                >
+                  {errors.day?.message ?? errors.time?.message}
+                </p>
+              )}
             </fieldset>
 
             <div className={styles.commentsGroup}>

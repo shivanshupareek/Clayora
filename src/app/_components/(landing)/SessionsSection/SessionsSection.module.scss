@@ -19,9 +19,10 @@
 // -----------------------------------------------------------------------------
 
 // Header row: heading (left) + controls (right)
+// align-items: flex-end so arrows pin to the baseline of the heading on all sizes
 .carouselHeader {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   gap: $space-4;
   margin-bottom: $space-4;
@@ -103,6 +104,8 @@
 
 // -----------------------------------------------------------------------------
 // Card group — one "page" of the carousel, always 100% of track width
+// padding-inline creates visual breathing room at group edges so adjacent groups
+// don't appear flush during the slide transition.
 // -----------------------------------------------------------------------------
 
 .group {
@@ -110,9 +113,16 @@
   display: flex;
   justify-content: center;
   gap: $space-3;
+  padding-inline: $space-2;
+
+  @include respond-to("sm") {
+    gap: $space-16;
+    padding-inline: $space-3;
+  }
 
   @include respond-to("lg") {
     gap: $space-12;
+    padding-inline: $space-6;
   }
 }
 
@@ -138,6 +148,22 @@
 .cardImage {
   object-fit: cover;
   object-position: center;
+}
+
+// Counter overlay — shown only when one card is visible (xs viewport)
+.cardCounter {
+  position: absolute;
+  bottom: $space-1;
+  right: $space-1;
+  background: rgba(37, 36, 34, 0.65);
+  color: #f5f5f5;
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: 3px $space-1;
+  border-radius: $radius-sm;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .cardTitle {
