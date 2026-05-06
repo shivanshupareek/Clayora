@@ -76,6 +76,11 @@ describe("Footer", () => {
     expect(screen.getByText(/©claylabs\. all rights reserved/i)).toBeInTheDocument();
   });
 
+  it("hides the banner image when hideBanner is true", () => {
+    render(<Footer hideBanner />);
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+  });
+
   // ---------------------------------------------------------------------------
   // Accessibility
   // ---------------------------------------------------------------------------

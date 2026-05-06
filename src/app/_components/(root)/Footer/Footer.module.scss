@@ -23,33 +23,19 @@
 .bannerWrapper {
   position: relative;
   margin-inline: $space-3;
-  height: 220px;
+  // aspect-ratio matches the image's natural 16:9 proportions — minimal cropping at all breakpoints
+  aspect-ratio: 16 / 9;
+  max-height: 520px;
   overflow: hidden;
   border-radius: $radius-sm;
 
   @include respond-to("sm") {
     margin-inline: $space-4;
-    height: 280px;
   }
 
   @include respond-to("md") {
     margin-inline: $space-8;
-    height: 380px;
   }
-
-  @include respond-to("lg") {
-    height: 400px;
-  }
-
-  @include respond-to("xl") {
-    height: 420px;
-  }
-}
-
-// Negative inset zooms the image out ~9% — shows more of the composition
-.bannerImageContainer {
-  position: absolute;
-  inset: -5%;
 }
 
 .bannerImage {

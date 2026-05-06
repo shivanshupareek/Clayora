@@ -180,7 +180,6 @@ const themeInitScript = `(function(){try{var t=localStorage.getItem('cl-theme');
 // =============================================================================
 
 import Navbar from "./_components/(root)/Navbar/Navbar";
-import Footer from "./_components/(root)/Footer/Footer";
 import SmoothScroll from "./_components/(root)/SmoothScroll/SmoothScroll";
 
 export default function RootLayout({
@@ -214,8 +213,6 @@ export default function RootLayout({
           <Navbar />
 
           {children}
-
-          <Footer />
         </SmoothScroll>
 
         {/* Site-wide JSON-LD structured data */}

@@ -2,22 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
-export default function Footer() {
+export default function Footer({ hideBanner = false }: { hideBanner?: boolean }) {
   return (
     <footer className={styles.footer}>
-      <div className={styles.bannerSection}>
+      {!hideBanner && <div className={styles.bannerSection}>
         <div className={styles.bannerWrapper}>
-          <div className={styles.bannerImageContainer}>
-            <Image
-              src="/assets/landing/footerImg.jpeg"
-              alt="Handcrafted pottery pieces arranged on a warm wooden surface"
-              fill
-              sizes="(max-width: 480px) calc(100vw - 48px), (max-width: 768px) calc(100vw - 64px), (max-width: 1440px) calc(100vw - 128px), 1312px"
-              className={styles.bannerImage}
-            />
-          </div>
+          <Image
+            src="/assets/landing/footerImg.jpeg"
+            alt="Handcrafted pottery pieces arranged on a warm wooden surface"
+            fill
+            sizes="(max-width: 480px) calc(100vw - 48px), (max-width: 768px) calc(100vw - 64px), (max-width: 1440px) calc(100vw - 128px), 1312px"
+            className={styles.bannerImage}
+          />
         </div>
-      </div>
+      </div>}
 
       <div className={styles.content}>
         <div className={styles.topRow}>
