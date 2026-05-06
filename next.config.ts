@@ -43,7 +43,6 @@ const PermissionsPolicy = [
   "accelerometer=()",
   "gyroscope=()",
   "magnetometer=()",
-  "ambient-light-sensor=()",
   // Media / display
   "autoplay=()",
   "fullscreen=(self)",
@@ -61,11 +60,12 @@ const PermissionsPolicy = [
   "xr-spatial-tracking=()",
   // Misc browser APIs not used by this site
   "window-management=()",
-  "wake-lock=()",
+  "screen-wake-lock=()",
   "gamepad=()",
-  // Privacy Sandbox — explicit opt-out (non-negotiable per AGENTS.md)
-  "interest-cohort=()",
-  "browsing-topics=()",
+  // Privacy Sandbox — explicit opt-out
+  // interest-cohort (FLoC) and browsing-topics removed: Chrome dropped these
+  // from the Permissions Policy spec; they generate unrecognized-feature warnings.
+  // Remaining directives below still enforce opt-out of ad-targeting APIs.
   "join-ad-interest-group=()",
   "run-ad-auction=()",
   "attribution-reporting=()",
