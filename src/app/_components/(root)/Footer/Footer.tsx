@@ -6,11 +6,12 @@ export default function Footer({ hideBanner = false }: { hideBanner?: boolean })
   return (
     <footer className={styles.footer}>
       {!hideBanner && <div className={styles.bannerSection}>
-        <div className={styles.bannerWrapper}>
+        <div className={styles.bannerWrapper} style={{ position: "relative" }}>
           <Image
             src="/assets/landing/footerImg.jpeg"
             alt="Handcrafted pottery pieces arranged on a warm wooden surface"
             fill
+            loading="eager"
             sizes="(max-width: 480px) calc(100vw - 48px), (max-width: 768px) calc(100vw - 64px), (max-width: 1440px) calc(100vw - 128px), 1312px"
             className={styles.bannerImage}
           />

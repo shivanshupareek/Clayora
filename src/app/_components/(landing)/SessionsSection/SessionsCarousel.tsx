@@ -158,9 +158,17 @@ export default function SessionsCarousel() {
                       src={card.src}
                       alt={card.alt}
                       fill
-                      sizes="(min-width: 1024px) calc((100vw - 160px) / 3), (min-width: 480px) calc((100vw - 80px) / 2), calc(100vw - 48px)"
+                      sizes="(min-width: 1024px) calc((100vw - 384px) / 3), (min-width: 480px) calc((100vw - 224px) / 2), calc(100vw - 80px)"
                       className={styles.cardImage}
                     />
+                    {itemsPerView === 1 && (
+                      <span
+                        className={styles.cardCounter}
+                        aria-label={`Card ${groupIndex + 1} of ${totalGroups}`}
+                      >
+                        {groupIndex + 1}/{totalGroups}
+                      </span>
+                    )}
                   </div>
                   <h3 className={styles.cardTitle}>{card.title}</h3>
                   <p className={styles.cardText}>{card.text}</p>

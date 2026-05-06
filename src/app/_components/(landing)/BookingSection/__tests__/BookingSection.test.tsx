@@ -114,11 +114,7 @@ describe("BookingSection", () => {
     expect(mockSubmitBooking).not.toHaveBeenCalled();
   });
 
-  // ---------------------------------------------------------------------------
-  // Happy path
-  // ---------------------------------------------------------------------------
-
-  it("calls submitBooking with FormData on valid submission", async () => {
+  it("shows error when phone is empty on submit", async () => {
     const user = userEvent.setup();
     render(<BookingSection />);
 
@@ -126,19 +122,70 @@ describe("BookingSection", () => {
     await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
     await user.click(screen.getByRole("button", { name: /join now!/i }));
 
+    expect(await screen.findByText(/phone number is required/i)).toBeInTheDocument();
+    expect(mockSubmitBooking).not.toHaveBeenCalled();
+  });
+
+  it("shows error for invalid Australian phone number", async () => {
+    const user = userEvent.setup();
+    render(<BookingSection />);
+
+    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
+    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await user.type(screen.getByLabelText(/phone number/i), "12345678");
+    await user.click(screen.getByRole("button", { name: /join now!/i }));
+
+    expect(await screen.findByText(/valid australian phone number/i)).toBeInTheDocument();
+    expect(mockSubmitBooking).not.toHaveBeenCalled();
+  });
+
+  it("shows error when day is not selected", async () => {
+    const user = userEvent.setup();
+    render(<BookingSection />);
+
+    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
+    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await user.type(screen.getByLabelText(/phone number/i), "0412345678");
+    await user.click(screen.getByRole("button", { name: /join now!/i }));
+
+    expect(await screen.findByText(/please select a day/i)).toBeInTheDocument();
+    expect(mockSubmitBooking).not.toHaveBeenCalled();
+  });
+
+  // ---------------------------------------------------------------------------
+  // Happy path — helper to fill all required fields
+  // ---------------------------------------------------------------------------
+
+  async function fillRequiredFields(user: ReturnType<typeof userEvent.setup>) {
+    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
+    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await user.type(screen.getByLabelText(/phone number/i), "0412345678");
+    await user.selectOptions(screen.getByLabelText(/day of the week/i), "Monday");
+    await user.selectOptions(screen.getByLabelText(/preferred time slot/i), "10:00am – 12:00pm");
+  }
+
+  it("calls submitBooking with FormData on valid submission", async () => {
+    const user = userEvent.setup();
+    render(<BookingSection />);
+
+    await fillRequiredFields(user);
+    await user.click(screen.getByRole("button", { name: /join now!/i }));
+
     await waitFor(() => expect(mockSubmitBooking).toHaveBeenCalledTimes(1));
 
     const formData = mockSubmitBooking.mock.calls[0][0] as FormData;
     expect(formData.get("name")).toBe("Jane Smith");
     expect(formData.get("email")).toBe("jane@example.com");
+    expect(formData.get("phone")).toBe("0412345678");
+    expect(formData.get("day")).toBe("Monday");
+    expect(formData.get("time")).toBe("10:00am – 12:00pm");
   });
 
   it("replaces button with 'see you soon!' on success", async () => {
     const user = userEvent.setup();
     render(<BookingSection />);
 
-    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
-    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await fillRequiredFields(user);
     await user.click(screen.getByRole("button", { name: /join now!/i }));
 
     expect(await screen.findByRole("status")).toHaveTextContent(/see you soon!/i);
@@ -149,8 +196,7 @@ describe("BookingSection", () => {
     const user = userEvent.setup();
     render(<BookingSection />);
 
-    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
-    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await fillRequiredFields(user);
     await user.click(screen.getByRole("button", { name: /join now!/i }));
 
     const status = await screen.findByRole("status");
@@ -164,8 +210,7 @@ describe("BookingSection", () => {
     const nameInput = screen.getByLabelText(/^name$/i);
     const emailInput = screen.getByLabelText(/^email$/i);
 
-    await user.type(nameInput, "Jane Smith");
-    await user.type(emailInput, "jane@example.com");
+    await fillRequiredFields(user);
     await user.click(screen.getByRole("button", { name: /join now!/i }));
 
     await screen.findByRole("status");
@@ -183,8 +228,7 @@ describe("BookingSection", () => {
     const user = userEvent.setup();
     render(<BookingSection />);
 
-    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
-    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await fillRequiredFields(user);
     await user.click(screen.getByRole("button", { name: /join now!/i }));
 
     expect(await screen.findByRole("alert")).toHaveTextContent(/something went wrong/i);
@@ -204,8 +248,7 @@ describe("BookingSection", () => {
     const user = userEvent.setup();
     render(<BookingSection />);
 
-    await user.type(screen.getByLabelText(/^name$/i), "Jane Smith");
-    await user.type(screen.getByLabelText(/^email$/i), "jane@example.com");
+    await fillRequiredFields(user);
     await user.click(screen.getByRole("button", { name: /join now!/i }));
 
     expect(await screen.findByRole("button", { name: /\.\.\./i })).toBeDisabled();
