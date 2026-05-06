@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "./_components/(landing)/Hero/Hero";
 import SessionsSection from "./_components/(landing)/SessionsSection/SessionsSection";
 import BookingSection from "./_components/(landing)/BookingSection/BookingSection";
+import Footer from "./_components/(root)/Footer/Footer";
 
 export const metadata: Metadata = {
   alternates: {
@@ -9,16 +10,15 @@ export const metadata: Metadata = {
   },
 };
 
-// Landing page — sections will be added here one at a time.
-// Page flow: Hero → Problem → Solution → What We Do → Stages & Services
-//            → Work/Concept → Testimonials → Footer
-
 export default function Home() {
   return (
-    <main id="main-content">
-      <Hero />
-      <SessionsSection />
-      <BookingSection />
-    </main>
+    <>
+      <main id="main-content">
+        <Hero />
+        <SessionsSection />
+        <BookingSection />
+      </main>
+      <Footer />
+    </>
   );
 }
