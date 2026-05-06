@@ -81,11 +81,11 @@ export const metadata: Metadata = {
       "Join ClayLabs for intimate pottery classes in small groups. A peaceful, welcoming community-based studio in Australia for all skill levels.",
     images: [
       {
-        url: "/assets/og/og-default.jpg",
+        url: "/assets/og/OG_image.png",
         width: 1200,
         height: 630,
         alt: "ClayLabs — Pottery Classes in Australia",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
   },
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     title: "ClayLabs — Pottery Classes in Australia",
     description:
       "Join ClayLabs for intimate pottery classes in small groups. A peaceful, welcoming community-based studio in Australia for all skill levels.",
-    images: ["/assets/og/og-default.jpg"],
+    images: ["/assets/og/OG_image.png"],
   },
 
   alternates: {
@@ -140,7 +140,7 @@ const jsonLd = {
   description:
     "Intimate pottery classes in small groups. A peaceful, community-based pottery studio in Australia for all skill levels.",
   url: "https://claylabs.com.au",
-  logo: "https://claylabs.com.au/assets/og/og-default.jpg",
+  logo: "https://claylabs.com.au/assets/og/OG_image.png",
   sameAs: [],
   address: {
     "@type": "PostalAddress",
