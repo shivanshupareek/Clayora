@@ -2,8 +2,10 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import BookingSection from "../BookingSection";
 
-// jsdom does not implement scrollIntoView — stub it so useEffect hooks don't throw.
+// jsdom does not implement scroll APIs — stub them so useEffect hooks don't throw.
 window.HTMLElement.prototype.scrollIntoView = jest.fn();
+window.HTMLElement.prototype.scrollTo = jest.fn();
+Object.defineProperty(window, "scrollTo", { value: jest.fn(), writable: true });
 
 // ── Next.js mocks ────────────────────────────────────────────────────────────
 

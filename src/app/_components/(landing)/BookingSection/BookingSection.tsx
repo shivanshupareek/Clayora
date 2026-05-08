@@ -35,18 +35,37 @@ export default function BookingSection() {
   }, [tabParam]);
 
   // Scroll #book into view when arriving via a CTA deep-link (e.g. /?tab=kiln#book).
+  // Uses window.scrollTo so Lenis intercepts and animates the scroll.
   useEffect(() => {
     if (!tabParam) return;
     const timer = setTimeout(() => {
-      document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const el = document.getElementById("book");
+      if (el) window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
     }, 120);
     return () => clearTimeout(timer);
   }, [tabParam]);
 
-  // Scroll active tab button into view in the strip (fixes off-screen tab on mobile).
+  // Scroll active tab button into view horizontally within the strip.
+  // Skips mount to avoid scrolling the page to the booking section on initial load.
+  const isFirstTabMount = useRef(true);
   useEffect(() => {
+    if (isFirstTabMount.current) {
+      isFirstTabMount.current = false;
+      return;
+    }
     const idx = TABS.findIndex((t) => t.id === activeTab);
-    tabRefs.current[idx]?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+    const btn = tabRefs.current[idx];
+    if (!btn) return;
+    const strip = btn.closest('[role="tablist"]') as HTMLElement | null;
+    if (!strip) return;
+    const btnLeft = btn.offsetLeft;
+    const btnRight = btnLeft + btn.offsetWidth;
+    const { scrollLeft, offsetWidth } = strip;
+    if (btnLeft < scrollLeft) {
+      strip.scrollTo({ left: btnLeft, behavior: "smooth" });
+    } else if (btnRight > scrollLeft + offsetWidth) {
+      strip.scrollTo({ left: btnRight - offsetWidth, behavior: "smooth" });
+    }
   }, [activeTab]);
 
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);

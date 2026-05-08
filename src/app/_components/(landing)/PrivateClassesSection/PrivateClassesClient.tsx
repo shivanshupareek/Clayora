@@ -133,7 +133,7 @@ export default function PrivateClassesClient() {
           ))}
         </div>
         <p className={styles.price}>$90 per person</p>
-        <Link href="/?tab=private#book" className={styles.cta}>
+        <Link href="/?tab=private#book" scroll={false} className={styles.cta}>
           <span className={styles.ctaLabel}>book private session</span>
           <span className={styles.ctaArrow} aria-hidden="true">
             <ArrowRight size={14} focusable={false} />

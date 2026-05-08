@@ -58,7 +58,7 @@ export default function KidsClassesSection() {
               <li key={b}>{b}</li>
             ))}
           </ul>
-          <Link href="/?tab=kids#book" className={styles.cta}>
+          <Link href="/?tab=kids#book" scroll={false} className={styles.cta}>
             <span className={styles.ctaLabel}>book classes</span>
             <span className={styles.ctaArrow} aria-hidden="true">
               <ArrowRight size={14} focusable={false} />

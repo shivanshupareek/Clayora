@@ -47,7 +47,7 @@ export default function KilnFiringSection() {
             </p>
           </div>
 
-          <Link href="/?tab=kiln#book" className={styles.cta}>
+          <Link href="/?tab=kiln#book" scroll={false} className={styles.cta}>
             <span className={styles.ctaLabel}>book kiln firing</span>
             <span className={styles.ctaArrow} aria-hidden="true">
               <ArrowRight size={14} focusable={false} />
