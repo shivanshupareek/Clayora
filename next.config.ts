@@ -15,11 +15,11 @@ const isDev = process.env.NODE_ENV === "development";
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""};
+  script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://va.vercel-scripts.com;
   style-src 'self' 'unsafe-inline';
   img-src 'self' data: blob:;
   font-src 'self';
-  connect-src 'self';
+  connect-src 'self' https://va.vercel-scripts.com;
   media-src 'self';
   object-src 'none';
   frame-src 'none';
@@ -43,7 +43,9 @@ const PermissionsPolicy = [
   "accelerometer=()",
   "gyroscope=()",
   "magnetometer=()",
-  "ambient-light-sensor=()",
+  // ambient-light-sensor removed: Chrome dropped it from the Permissions-Policy spec
+  // and generates an unrecognized-feature warning. No security regression — it was
+  // never a meaningful attack surface on this site.
   // Media / display
   "autoplay=()",
   "fullscreen=(self)",
