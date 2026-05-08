@@ -1,0 +1,283 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+// =============================================================================
+// PRIVATE CLASSES SECTION
+// =============================================================================
+
+.section {
+  @include container;
+  padding-block: $space-4;
+
+  @include respond-to("lg") {
+    padding-block: $space-16;
+  }
+}
+
+// =============================================================================
+// Inner grid
+// Mobile: flex column (leftTop → rightPanel → leftBottom)
+// Desktop (lg+): 2-column CSS grid
+// =============================================================================
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  @include respond-to("lg") {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    gap: $space-8 $space-16;
+  }
+}
+
+// =============================================================================
+// Left top — heading + subtitle
+// =============================================================================
+
+.leftTop {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  @include respond-to("lg") {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+.heading {
+  font-family: $font-body;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  letter-spacing: $tracking-tight;
+  color: var(--color-text-primary);
+
+  @include respond-to("md") {
+    font-size: $font-size-3xl;
+  }
+
+  @include respond-to("lg") {
+    font-size: $font-size-4xl;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+}
+
+.subtitle {
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+  max-width: 420px;
+}
+
+// =============================================================================
+// Left bottom — tabs + price
+// =============================================================================
+
+.leftBottom {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  @include respond-to("lg") {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: end;
+    padding-right: $space-20;
+    padding-bottom: $space-2;
+  }
+}
+
+// =============================================================================
+// Tab list
+// =============================================================================
+
+.tabList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tab {
+  @include button-reset;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: $space-2 $space-2;
+  border-radius: $radius-sm;
+  text-align: left;
+  overflow: hidden;
+  transition:
+    opacity $transition-fast,
+    background-color $transition-fast;
+  opacity: 0.4;
+
+  &.tabActive {
+    opacity: 1;
+    background-color: var(--color-border);
+    border: 1px solid var(--color-border-strong);
+  }
+
+  &:hover:not(.tabActive) {
+    opacity: 0.7;
+    background-color: var(--color-border);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.tabText {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-snug;
+  color: var(--color-text-primary);
+  transition: font-weight $transition-fast;
+
+  .tabActive & {
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// =============================================================================
+// Progress bar — sits at the bottom edge of each tab
+// =============================================================================
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-text-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+
+  &.progressActive {
+    animation: progressFill 5s linear forwards;
+  }
+
+  &.progressPaused {
+    animation: progressFill 5s linear forwards;
+    animation-play-state: paused;
+  }
+}
+
+@keyframes progressFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+// =============================================================================
+// Price
+// =============================================================================
+
+.price {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+// =============================================================================
+// Right panel — active card display
+// =============================================================================
+
+.rightPanel {
+  position: relative;
+  overflow: hidden;
+
+  @include respond-to("lg") {
+    grid-column: 2;
+    grid-row: 2 / 4;
+  }
+}
+
+.panelInner {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  height: 100%;
+}
+
+// =============================================================================
+// Image
+// =============================================================================
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $radius-sm;
+}
+
+.cardImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+// =============================================================================
+// Card meta — title + icon on same row
+// =============================================================================
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+}
+
+.cardTitle {
+  font-family: $font-body;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-snug;
+  color: var(--color-text-primary);
+}
+
+.cardIcon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: block;
+  object-fit: contain;
+}
+
+// SVG fill is dark (#2A1101) — invisible on dark bg without this
+:global(html[data-theme="dark"]) .cardIcon {
+  filter: brightness(0) invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(html:not([data-theme])) .cardIcon {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.cardText {
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+  max-width: 520px;
+}
