@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import styles from "./PrivateClassesSection.module.scss";
 
 const CARDS = [
@@ -50,7 +52,7 @@ export default function PrivateClassesClient() {
 
   return (
     <div
-      className={styles.inner}
+      className={`${styles.inner} ${isPaused ? styles.pauseCursor : ""}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -131,6 +133,12 @@ export default function PrivateClassesClient() {
           ))}
         </div>
         <p className={styles.price}>$90 per person</p>
+        <Link href="/?tab=private#book" scroll={false} className={styles.cta}>
+          <span className={styles.ctaLabel}>book private session</span>
+          <span className={styles.ctaArrow} aria-hidden="true">
+            <ArrowRight size={14} focusable={false} />
+          </span>
+        </Link>
       </div>
     </div>
   );

@@ -281,3 +281,58 @@
   color: var(--color-text-secondary);
   max-width: 520px;
 }
+
+// =============================================================================
+// CTA — two-layer pill, same pattern as KidsClassesSection / KilnFiringSection
+// =============================================================================
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-6;
+  background-color: var(--color-text-primary);
+  border-radius: $radius-md;
+  padding: $space-1;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: opacity $transition-base;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.ctaLabel {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  border-radius: 6px;
+  padding: 12px $space-2;
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ctaArrow {
+  color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  padding-right: $space-1;
+}
+
+// =============================================================================
+// Pause cursor — shown when carousel is paused on hover (light + dark mode)
+// =============================================================================
+
+.pauseCursor {
+  cursor: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><rect x='6' y='5' width='4' height='14' rx='1' fill='%232A1101'/><rect x='14' y='5' width='4' height='14' rx='1' fill='%232A1101'/></svg>") 12 12, pause;
+
+  :global(html[data-theme="dark"]) & {
+    cursor: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><rect x='6' y='5' width='4' height='14' rx='1' fill='%23FDF4ED'/><rect x='14' y='5' width='4' height='14' rx='1' fill='%23FDF4ED'/></svg>") 12 12, pause;
+  }
+}

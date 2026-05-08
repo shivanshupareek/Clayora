@@ -34,6 +34,40 @@ export default function BookingSection() {
     setActiveTab(next);
   }, [tabParam]);
 
+  // Scroll #book into view when arriving via a CTA deep-link (e.g. /?tab=kiln#book).
+  // Uses window.scrollTo so Lenis intercepts and animates the scroll.
+  useEffect(() => {
+    if (!tabParam) return;
+    const timer = setTimeout(() => {
+      const el = document.getElementById("book");
+      if (el) window.scrollTo({ top: el.offsetTop, behavior: "smooth" });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [tabParam]);
+
+  // Scroll active tab button into view horizontally within the strip.
+  // Skips mount to avoid scrolling the page to the booking section on initial load.
+  const isFirstTabMount = useRef(true);
+  useEffect(() => {
+    if (isFirstTabMount.current) {
+      isFirstTabMount.current = false;
+      return;
+    }
+    const idx = TABS.findIndex((t) => t.id === activeTab);
+    const btn = tabRefs.current[idx];
+    if (!btn) return;
+    const strip = btn.closest('[role="tablist"]') as HTMLElement | null;
+    if (!strip) return;
+    const btnLeft = btn.offsetLeft;
+    const btnRight = btnLeft + btn.offsetWidth;
+    const { scrollLeft, offsetWidth } = strip;
+    if (btnLeft < scrollLeft) {
+      strip.scrollTo({ left: btnLeft, behavior: "smooth" });
+    } else if (btnRight > scrollLeft + offsetWidth) {
+      strip.scrollTo({ left: btnRight - offsetWidth, behavior: "smooth" });
+    }
+  }, [activeTab]);
+
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const indicatorRef = useRef<HTMLSpanElement>(null);
   const firstRender = useRef(true);
@@ -65,26 +99,28 @@ export default function BookingSection() {
           Book your session
         </h2>
 
-        <div
-          className={styles.tabStrip}
-          role="tablist"
-          aria-label="Booking type"
-        >
-          <span ref={indicatorRef} className={styles.tabIndicator} aria-hidden="true" />
-          {TABS.map((tab, i) => (
-            <button
-              key={tab.id}
-              ref={(el) => { tabRefs.current[i] = el; }}
-              role="tab"
-              id={`booking-tab-${tab.id}`}
-              aria-selected={activeTab === tab.id}
-              aria-controls={`booking-panel-${tab.id}`}
-              className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabBtnActive : ""}`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className={styles.tabStripWrapper}>
+          <div
+            className={styles.tabStrip}
+            role="tablist"
+            aria-label="Booking type"
+          >
+            <span ref={indicatorRef} className={styles.tabIndicator} aria-hidden="true" />
+            {TABS.map((tab, i) => (
+              <button
+                key={tab.id}
+                ref={(el) => { tabRefs.current[i] = el; }}
+                role="tab"
+                id={`booking-tab-${tab.id}`}
+                aria-selected={activeTab === tab.id}
+                aria-controls={`booking-panel-${tab.id}`}
+                className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabBtnActive : ""}`}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div

@@ -124,6 +124,27 @@
 // Tab strip
 // ---------------------------------------------------------------------------
 
+.tabStripWrapper {
+  position: relative;
+  max-width: 100%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--color-bg));
+    pointer-events: none;
+    border-radius: 0 $radius-md $radius-md 0;
+
+    @include respond-to("md") {
+      display: none;
+    }
+  }
+}
+
 .tabStrip {
   position: relative; // needed for sliding indicator
   display: flex;
@@ -229,6 +250,7 @@
 .dropdowns {
   display: flex;
   gap: $space-2;
+  flex-wrap: wrap;
 }
 
 // ---------------------------------------------------------------------------
@@ -360,7 +382,6 @@
   font-weight: $font-weight-medium;
   color: var(--color-text-primary);
   cursor: pointer;
-  color-scheme: light; // forces light calendar popup regardless of page theme
   width: 100%;
   transition: border-color $transition-base, opacity $transition-base;
 
