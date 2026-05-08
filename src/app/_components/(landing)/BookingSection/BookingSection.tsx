@@ -34,6 +34,21 @@ export default function BookingSection() {
     setActiveTab(next);
   }, [tabParam]);
 
+  // Scroll #book into view when arriving via a CTA deep-link (e.g. /?tab=kiln#book).
+  useEffect(() => {
+    if (!tabParam) return;
+    const timer = setTimeout(() => {
+      document.getElementById("book")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, [tabParam]);
+
+  // Scroll active tab button into view in the strip (fixes off-screen tab on mobile).
+  useEffect(() => {
+    const idx = TABS.findIndex((t) => t.id === activeTab);
+    tabRefs.current[idx]?.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+  }, [activeTab]);
+
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const indicatorRef = useRef<HTMLSpanElement>(null);
   const firstRender = useRef(true);
@@ -65,26 +80,28 @@ export default function BookingSection() {
           Book your session
         </h2>
 
-        <div
-          className={styles.tabStrip}
-          role="tablist"
-          aria-label="Booking type"
-        >
-          <span ref={indicatorRef} className={styles.tabIndicator} aria-hidden="true" />
-          {TABS.map((tab, i) => (
-            <button
-              key={tab.id}
-              ref={(el) => { tabRefs.current[i] = el; }}
-              role="tab"
-              id={`booking-tab-${tab.id}`}
-              aria-selected={activeTab === tab.id}
-              aria-controls={`booking-panel-${tab.id}`}
-              className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabBtnActive : ""}`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className={styles.tabStripWrapper}>
+          <div
+            className={styles.tabStrip}
+            role="tablist"
+            aria-label="Booking type"
+          >
+            <span ref={indicatorRef} className={styles.tabIndicator} aria-hidden="true" />
+            {TABS.map((tab, i) => (
+              <button
+                key={tab.id}
+                ref={(el) => { tabRefs.current[i] = el; }}
+                role="tab"
+                id={`booking-tab-${tab.id}`}
+                aria-selected={activeTab === tab.id}
+                aria-controls={`booking-panel-${tab.id}`}
+                className={`${styles.tabBtn} ${activeTab === tab.id ? styles.tabBtnActive : ""}`}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
@@ -10,6 +12,7 @@ export default function Footer() {
             href="/"
             className={styles.logo}
             aria-label="ClayLabs — go to homepage"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             ClayLabs
           </Link>

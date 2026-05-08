@@ -1,0 +1,44 @@
+@use "../../../../styles/variables" as *;
+@use "../../../../styles/mixins" as *;
+
+// =============================================================================
+// SCROLL TO TOP BUTTON
+// =============================================================================
+
+.btn {
+  @include button-reset;
+  position: fixed;
+  bottom: $space-6;
+  right: $space-6;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-text-primary);
+  border-radius: $radius-md;
+  padding: $space-1;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity $transition-base, transform $transition-base;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+.inner {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-1;
+}

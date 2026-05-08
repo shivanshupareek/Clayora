@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./not-found.module.scss";
 
-const REDIRECT_SECONDS = 30;
+const REDIRECT_SECONDS = 10;
 
 export default function NotFoundClient() {
   const router = useRouter();

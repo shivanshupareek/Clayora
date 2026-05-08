@@ -45,9 +45,9 @@ describe("NotFound", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the initial countdown value of 30", () => {
+  it("renders the initial countdown value of 10", () => {
     render(<NotFound />);
-    expect(screen.getByText(/30 seconds/i)).toBeInTheDocument();
+    expect(screen.getByText(/10 seconds/i)).toBeInTheDocument();
   });
 
   it("renders the Home CTA link pointing to /", () => {
@@ -69,13 +69,13 @@ describe("NotFound", () => {
   it("decrements the countdown by 1 after 1 second", () => {
     render(<NotFound />);
     act(() => { jest.advanceTimersByTime(1000); });
-    expect(screen.getByText(/29 seconds/i)).toBeInTheDocument();
+    expect(screen.getByText(/9 seconds/i)).toBeInTheDocument();
   });
 
   it("shows singular 'second' when countdown reaches 1", () => {
     render(<NotFound />);
     // Each tick must be its own act() — cascading setTimeouts re-register per re-render
-    for (let i = 0; i < 29; i++) {
+    for (let i = 0; i < 9; i++) {
       act(() => { jest.advanceTimersByTime(1000); });
     }
     expect(screen.getByText(/1 second/i)).toBeInTheDocument();
@@ -83,9 +83,9 @@ describe("NotFound", () => {
 
   // --- Redirect ---
 
-  it("calls router.push('/') after 30 seconds", () => {
+  it("calls router.push('/') after 10 seconds", () => {
     render(<NotFound />);
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 10; i++) {
       act(() => { jest.advanceTimersByTime(1000); });
     }
     expect(mockPush).toHaveBeenCalledWith("/");
@@ -102,7 +102,7 @@ describe("NotFound", () => {
 
   it("countdown region has aria-live polite", () => {
     render(<NotFound />);
-    const liveRegion = screen.getByText(/30 seconds/i).closest("[aria-live]");
+    const liveRegion = screen.getByText(/10 seconds/i).closest("[aria-live]");
     expect(liveRegion).toHaveAttribute("aria-live", "polite");
   });
 });
