@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://clayora.com/sitemap.xml",
+    sitemap: "https://clayora.com.au/sitemap.xml",
   };
 }

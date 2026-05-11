@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Page Not Found",
   robots: { index: false, follow: false },
   alternates: {
-    canonical: "https://clayora.com/404",
+    canonical: "https://clayora.com.au/404",
   },
 };
 

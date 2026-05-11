@@ -34,7 +34,7 @@ const poxe = localFont({
 // =============================================================================
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clayora.com"),
+  metadataBase: new URL("https://clayora.com.au"),
 
   title: {
     default: "Clayora — Pottery Classes in Australia",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     "community pottery",
   ],
 
-  authors: [{ name: "Clayora", url: "https://clayora.com" }],
+  authors: [{ name: "Clayora", url: "https://clayora.com.au" }],
   creator: "Clayora",
   publisher: "Clayora",
 
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://clayora.com",
+    url: "https://clayora.com.au",
     siteName: "Clayora",
     title: "Clayora — Pottery Classes in Australia",
     description:
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://clayora.com",
+    canonical: "https://clayora.com.au",
   },
 
   icons: {
@@ -139,8 +139,8 @@ const jsonLd = {
   name: "Clayora",
   description:
     "Intimate pottery classes in small groups. A peaceful, community-based pottery studio in Australia for all skill levels.",
-  url: "https://clayora.com",
-  logo: "https://clayora.com/assets/og/OG_image.png",
+  url: "https://clayora.com.au",
+  logo: "https://clayora.com.au/assets/og/OG_image.png",
   sameAs: [],
   address: {
     "@type": "PostalAddress",
@@ -159,7 +159,7 @@ const jsonLd = {
         price: "300",
         priceCurrency: "AUD",
         availability: "https://schema.org/InStock",
-        url: "https://clayora.com/#book",
+        url: "https://clayora.com.au/#book",
         itemOffered: {
           "@type": "Course",
           name: "6-Week Pottery Programme",

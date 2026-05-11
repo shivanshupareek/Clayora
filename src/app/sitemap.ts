@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://clayora.com";
+const BASE_URL = "https://clayora.com.au";
 
 // Add new routes here as pages are built.
 // changeFrequency and priority should reflect actual update cadence.

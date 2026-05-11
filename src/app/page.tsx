@@ -11,7 +11,7 @@ import Footer from "./_components/(root)/Footer/Footer";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://clayora.com",
+    canonical: "https://clayora.com.au",
   },
 };
 
