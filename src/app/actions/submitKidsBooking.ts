@@ -59,7 +59,7 @@ export async function submitKidsBooking(
   }
 
   // TODO: wire up Resend email transport here.
-  // Recipient: info@clayora.com
+  // Recipient: info@clayora.com.au
   console.log("[submitKidsBooking] New kids booking:", result.data);
 
   return { success: true };

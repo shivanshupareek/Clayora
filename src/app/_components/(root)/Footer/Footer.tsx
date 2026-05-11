@@ -22,8 +22,8 @@ export default function Footer() {
         </div>
 
         <div className={styles.contactRow}>
-          <a href="mailto:hello@clayora.com" className={styles.contactLink}>
-            hello@clayora.com
+          <a href="mailto:hello@clayora.com.au" className={styles.contactLink}>
+            hello@clayora.com.au
           </a>
           <a href="tel:+61123456789" className={styles.contactLink}>
             +61 123 456 789

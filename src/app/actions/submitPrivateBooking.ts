@@ -47,7 +47,7 @@ export async function submitPrivateBooking(
   }
 
   // TODO: wire up Resend email transport here.
-  // Recipient: info@clayora.com
+  // Recipient: info@clayora.com.au
   console.log("[submitPrivateBooking] New private booking:", result.data);
 
   return { success: true };
