@@ -1,5 +1,5 @@
 import Image from "next/image";
-import EmailForm from "./EmailForm";
+// import EmailForm from "./EmailForm";
 import styles from "./Hero.module.scss";
 
 export default function Hero() {
@@ -29,9 +29,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className={styles.formRow}>
+      {/* <div className={styles.formRow}>
         <EmailForm />
-      </div>
+      </div> */}
     </section>
   );
 }

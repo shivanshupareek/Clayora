@@ -20,13 +20,13 @@ export default function Home() {
     <>
       <main id="main-content">
         <Hero />
+        <Suspense fallback={null}>
+          <BookingSection />
+        </Suspense>
         <SessionsSection />
         <PrivateClassesSection />
         <KidsClassesSection />
         <KilnFiringSection />
-        <Suspense fallback={null}>
-          <BookingSection />
-        </Suspense>
       </main>
       <VisualBreak />
       <Footer />
