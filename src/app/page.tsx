@@ -7,7 +7,6 @@ import KidsClassesSection from "./_components/(landing)/KidsClassesSection/KidsC
 import KilnFiringSection from "./_components/(landing)/KilnFiringSection/KilnFiringSection";
 import BookingSection from "./_components/(landing)/BookingSection/BookingSection";
 import VisualBreak from "./_components/(landing)/VisualBreak/VisualBreak";
-import Footer from "./_components/(root)/Footer/Footer";
 
 export const metadata: Metadata = {
   alternates: {
@@ -29,7 +28,6 @@ export default function Home() {
         <KilnFiringSection />
       </main>
       {/* <VisualBreak /> */}
-      <Footer />
     </>
   );
 }
