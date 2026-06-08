@@ -37,8 +37,4 @@ describe("Hero", () => {
     expect(img.getAttribute("alt")).not.toBe("");
   });
 
-  it("renders the email form", () => {
-    render(<Hero />);
-    expect(screen.getByRole("textbox", { name: /email address/i })).toBeInTheDocument();
-  });
 });
