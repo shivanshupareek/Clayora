@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 
@@ -14,7 +15,18 @@ export default function Footer() {
             aria-label="Clayora — go to homepage"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Clayora
+            <Image
+              src="/assets/favicons/favicon.svg"
+              alt=""
+              width={36}
+              height={36}
+              unoptimized
+              aria-hidden="true"
+            />
+            <span className={styles.logoText}>
+              <span className={styles.logoName}>CLAYORA</span>
+              <span className={styles.logoTagline}>Earth to Elegance</span>
+            </span>
           </Link>
           <a href="#book" className={styles.cta}>
             get started
@@ -25,8 +37,8 @@ export default function Footer() {
           <a href="mailto:hello@clayora.com.au" className={styles.contactLink}>
             hello@clayora.com.au
           </a>
-          <a href="tel:+61123456789" className={styles.contactLink}>
-            +61 123 456 789
+          <a href="tel:+61481305911" className={styles.contactLink}>
+            0481 305 911
           </a>
         </div>
 

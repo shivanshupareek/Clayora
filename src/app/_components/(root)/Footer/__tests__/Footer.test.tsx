@@ -38,9 +38,9 @@ describe("Footer", () => {
 
   it("renders the phone contact link", () => {
     render(<Footer />);
-    const phoneLink = screen.getByRole("link", { name: /\+61 123 456 789/i });
+    const phoneLink = screen.getByRole("link", { name: /0481 305 911/i });
     expect(phoneLink).toBeInTheDocument();
-    expect(phoneLink).toHaveAttribute("href", "tel:+61123456789");
+    expect(phoneLink).toHaveAttribute("href", "tel:+61481305911");
   });
 
   it("renders the terms link", () => {

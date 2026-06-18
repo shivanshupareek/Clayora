@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Moon, Sun } from "lucide-react";
 import styles from "./Navbar.module.scss";
@@ -36,13 +37,23 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <nav className={styles.nav} aria-label="Main navigation">
-        {/* Logo — Poxe font, -2% letter spacing */}
         <Link
           href="/"
           className={styles.logo}
           aria-label="Clayora — go to homepage"
         >
-          Clayora
+          <Image
+            src="/assets/favicons/favicon.svg"
+            alt=""
+            width={36}
+            height={36}
+            unoptimized
+            aria-hidden="true"
+          />
+          <span className={styles.logoText}>
+            <span className={styles.logoName}>CLAYORA</span>
+            <span className={styles.logoTagline}>Earth to Elegance</span>
+          </span>
         </Link>
 
         <div className={styles.actions}>

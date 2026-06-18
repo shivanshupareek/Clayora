@@ -54,9 +54,10 @@ describe("Navbar", () => {
 
   // --- Logo ---
 
-  it("renders Clayora logo text", () => {
+  it("renders CLAYORA wordmark and tagline", () => {
     render(<Navbar />);
-    expect(screen.getByText("Clayora")).toBeInTheDocument();
+    expect(screen.getByText("CLAYORA")).toBeInTheDocument();
+    expect(screen.getByText("Earth to Elegance")).toBeInTheDocument();
   });
 
   it("logo links to the homepage", () => {

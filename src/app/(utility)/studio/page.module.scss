@@ -1,0 +1,221 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.main {
+  @include container;
+  padding-top: $space-2;
+  padding-bottom: $space-2;
+}
+
+// ─── Breadcrumb ────────────────────────────────────────────────────────────────
+
+.breadcrumb {
+  margin-bottom: $space-6;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  color: var(--color-text-muted);
+
+  li:not(:last-child)::after {
+    content: "›";
+    margin: 0 $space-1;
+  }
+
+  li[aria-current="page"] {
+    color: var(--color-text-secondary);
+  }
+}
+
+.breadcrumbLink {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// ─── Card (content column) ─────────────────────────────────────────────────────
+
+.card {
+  max-width: 720px;
+}
+
+// ─── Sections ──────────────────────────────────────────────────────────────────
+
+.section {
+  margin-bottom: $space-10;
+
+  @include respond-to("sm") {
+    margin-bottom: $space-8;
+  }
+}
+
+.sectionHeading {
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-muted);
+  letter-spacing: $tracking-wide;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: $space-3;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+}
+
+// ─── Hours ─────────────────────────────────────────────────────────────────────
+
+.hoursList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  max-width: 360px;
+}
+
+.hoursRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  dt {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    color: var(--color-text-secondary);
+  }
+
+  dd {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+}
+
+// ─── Location link ─────────────────────────────────────────────────────────────
+
+.link {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  line-height: $line-height-relaxed;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    text-decoration: none;
+  }
+}
+
+// ─── Contact list ──────────────────────────────────────────────────────────────
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-family: $font-body;
+  font-size: $font-size-base;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+    transition: color $transition-fast;
+  }
+
+  &:hover {
+    color: var(--color-text-primary);
+
+    svg {
+      color: var(--color-text-primary);
+    }
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    border-radius: $radius-sm;
+  }
+}
+
+// ─── About ─────────────────────────────────────────────────────────────────────
+
+.aboutText {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-secondary);
+}
+
+// ─── Social ────────────────────────────────────────────────────────────────────
+
+.socialSection {
+  display: flex;
+  justify-content: flex-start;
+  gap: $space-3;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  color: var(--color-text-secondary);
+  background: var(--color-border);
+  transition: background $transition-fast, color $transition-fast;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: var(--color-text-primary);
+    color: var(--color-bg);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

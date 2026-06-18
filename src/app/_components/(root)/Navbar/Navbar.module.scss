@@ -29,23 +29,43 @@
 }
 
 // -----------------------------------------------------------------------------
-// Logo — Poxe font, -2% letter spacing (per design spec)
+// Logo — icon + wordmark + tagline
 // -----------------------------------------------------------------------------
 
 .logo {
-  font-family: $font-heading;
-  font-size: $font-size-base;
-  font-weight: $font-weight-medium;
-  letter-spacing: -0.02em;
-  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   text-decoration: none;
-  line-height: 1;
-  // Prevent logo from shrinking on small screens
   flex-shrink: 0;
 
   &:focus-visible {
     @include focus-ring;
   }
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logoName {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  letter-spacing: $tracking-wide;
+  color: #F0D4B0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.logoTagline {
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  color: var(--color-text-muted);
+  line-height: 1;
 }
 
 // -----------------------------------------------------------------------------
