@@ -81,6 +81,7 @@
     width: 14px;
     height: 14px;
     flex-shrink: 0;
+    color: var(--color-text-primary);
   }
 }
 
@@ -159,7 +160,7 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
-    color: var(--color-text-muted);
+    color: var(--color-text-primary);
     transition: color $transition-fast;
   }
 
@@ -201,7 +202,7 @@
   width: 40px;
   height: 40px;
   border-radius: $radius-full;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   background: var(--color-border);
   transition: background $transition-fast, color $transition-fast;
 
