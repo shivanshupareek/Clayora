@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "./page.module.scss";
 
 export const metadata: Metadata = {
@@ -146,14 +147,15 @@ export default function StudioPage() {
       <nav aria-label="Breadcrumb" className={styles.breadcrumb}>
         <ol className={styles.breadcrumbList}>
           <li>
-            <a href="/" className={styles.breadcrumbLink}>Home</a>
+            <Link href="/" className={styles.breadcrumbLink}>
+              Home
+            </Link>
           </li>
           <li aria-current="page">Studio</li>
         </ol>
       </nav>
 
       <article className={styles.card} aria-label="Clayora Studio">
-
         <section aria-labelledby="hours-heading" className={styles.section}>
           <h2 id="hours-heading" className={styles.sectionHeading}>
             <ClockIcon />
@@ -183,7 +185,7 @@ export default function StudioPage() {
             rel="noopener noreferrer"
             aria-label="Open Clayora Studio location in Google Maps"
           >
-            Crab Apple Lane, 2, Rouse Hill, 2155 NSW, Australia
+            2, Crab Apple Lane, Rouse Hill, NSW-2155, Australia
           </a>
         </section>
 
@@ -244,8 +246,8 @@ export default function StudioPage() {
             About
           </h2>
           <p className={styles.aboutText}>
-            At Clayora studio, we believe there is a magic in getting your
-            hands messy.
+            At Clayora studio, we believe there is a magic in getting your hands
+            messy.
           </p>
         </section>
 
@@ -269,7 +271,6 @@ export default function StudioPage() {
             <InstagramIcon />
           </a>
         </section>
-
       </article>
     </main>
   );
