@@ -81,7 +81,7 @@ export const metadata: Metadata = {
       "Join Clayora for intimate pottery classes in small groups. A peaceful, welcoming community-based studio in Australia for all skill levels.",
     images: [
       {
-        url: "/assets/og/OG_image.png",
+        url: "/assets/og/og-preview.png",
         width: 1200,
         height: 630,
         alt: "Clayora — Pottery Classes in Australia",
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     title: "Clayora — Pottery Classes in Australia",
     description:
       "Join Clayora for intimate pottery classes in small groups. A peaceful, welcoming community-based studio in Australia for all skill levels.",
-    images: ["/assets/og/OG_image.png"],
+    images: ["/assets/og/og-preview.png"],
   },
 
   alternates: {
@@ -140,7 +140,7 @@ const jsonLd = {
   description:
     "Intimate pottery classes in small groups. A peaceful, community-based pottery studio in Australia for all skill levels.",
   url: "https://clayora.com.au",
-  logo: "https://clayora.com.au/assets/og/OG_image.png",
+  logo: "https://clayora.com.au/assets/og/og-preview-square.png",
   sameAs: [],
   address: {
     "@type": "PostalAddress",
