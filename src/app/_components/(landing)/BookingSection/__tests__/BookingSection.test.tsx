@@ -253,12 +253,14 @@ describe("BookingSection", () => {
     expect(formData.get("day")).toBe("Monday");
   });
 
-  it("shows 'see you soon!' on pottery success", async () => {
+  it("shows payment confirmation message on pottery success", async () => {
     const user = userEvent.setup();
     render(<BookingSection />);
     await fillPotteryFields(user);
     await user.click(screen.getByRole("button", { name: /join now!/i }));
-    expect(await screen.findByRole("status")).toHaveTextContent(/see you soon!/i);
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      /confirm your spot.*\+61 481 305 911/i
+    );
   });
 
   it("success message has aria-live='polite'", async () => {

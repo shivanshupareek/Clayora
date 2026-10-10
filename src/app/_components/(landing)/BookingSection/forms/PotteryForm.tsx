@@ -242,7 +242,9 @@ export default function PotteryForm() {
         )}
         {isSuccess ? (
           <p role="status" aria-live="polite" className={styles.successText}>
-            see you soon!
+            Thanks for booking! To confirm your spot, please call us on{" "}
+            <a href="tel:+61481305911">+61 481 305 911</a> to complete
+            payment.
           </p>
         ) : (
           <button
