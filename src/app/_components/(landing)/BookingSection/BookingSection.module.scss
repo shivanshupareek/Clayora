@@ -576,6 +576,15 @@
   font-size: $font-size-base;
   font-weight: $font-weight-medium;
   color: var(--color-text-primary);
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
