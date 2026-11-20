@@ -42,7 +42,7 @@ export async function submitKilnBooking(
   }
 
   // TODO: wire up Resend email transport here.
-  // Recipient: info@clayora.com.au
+  // Recipient: clayorastudios@gmail.com
   console.log("[submitKilnBooking] New kiln booking:", result.data);
 
   return { success: true };

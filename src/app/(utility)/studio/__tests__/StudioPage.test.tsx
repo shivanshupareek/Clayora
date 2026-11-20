@@ -78,7 +78,7 @@ describe("StudioPage", () => {
   it("renders the email link with correct href", () => {
     render(<StudioPage />);
     const link = screen.getByRole("link", { name: /email clayora/i });
-    expect(link).toHaveAttribute("href", "mailto:clayora.studios@gmail.com");
+    expect(link).toHaveAttribute("href", "mailto:clayorastudios@gmail.com");
   });
 
   it("renders the website link with correct href", () => {

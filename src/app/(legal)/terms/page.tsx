@@ -46,8 +46,8 @@ export default function TermsPage() {
           <ol className={styles.list}>
             <li>
               To cancel and receive a full refund, you must notify{" "}
-              <a href="mailto:clayora.studios@gmail.com" className={styles.link}>
-                clayora.studios@gmail.com
+              <a href="mailto:clayorastudios@gmail.com" className={styles.link}>
+                clayorastudios@gmail.com
               </a>{" "}
               at least 48 hours prior to the lesson. Within 48 hours of the
               scheduled lesson, there will be no refunds for cancellations or
@@ -63,8 +63,8 @@ export default function TermsPage() {
           <ol className={styles.list}>
             <li>
               To cancel and receive a full refund, you must notify{" "}
-              <a href="mailto:clayora.studios@gmail.com" className={styles.link}>
-                clayora.studios@gmail.com
+              <a href="mailto:clayorastudios@gmail.com" className={styles.link}>
+                clayorastudios@gmail.com
               </a>{" "}
               at least 48 hours prior to your session time.
             </li>
@@ -74,8 +74,8 @@ export default function TermsPage() {
             </li>
             <li>
               To book a makeup session you will have to email{" "}
-              <a href="mailto:clayora.studios@gmail.com" className={styles.link}>
-                clayora.studios@gmail.com
+              <a href="mailto:clayorastudios@gmail.com" className={styles.link}>
+                clayorastudios@gmail.com
               </a>{" "}
               48 hours before. Makeup sessions are subject to class availability.
             </li>
@@ -89,8 +89,8 @@ export default function TermsPage() {
           <ol className={styles.list}>
             <li>
               To cancel and receive a full refund, a customer must notify{" "}
-              <a href="mailto:clayora.studios@gmail.com" className={styles.link}>
-                clayora.studios@gmail.com
+              <a href="mailto:clayorastudios@gmail.com" className={styles.link}>
+                clayorastudios@gmail.com
               </a>{" "}
               at least 1 week prior to the event. Within 1 week of the scheduled
               event, there will be no refunds for cancellations or no-shows on

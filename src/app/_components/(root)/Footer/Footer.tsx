@@ -34,8 +34,8 @@ export default function Footer() {
         </div>
 
         <div className={styles.contactRow}>
-          <a href="mailto:hello@clayora.com.au" className={styles.contactLink}>
-            hello@clayora.com.au
+          <a href="mailto:clayorastudios@gmail.com" className={styles.contactLink}>
+            clayorastudios@gmail.com
           </a>
           <a href="tel:+61481305911" className={styles.contactLink}>
             0481 305 911
