@@ -35,7 +35,7 @@ export async function submitBooking(
   }
 
   // TODO: wire up Resend email transport here.
-  // Recipient: info@clayora.com.au
+  // Recipient: clayorastudios@gmail.com
   console.log("[submitBooking] New booking:", result.data);
 
   return { success: true };

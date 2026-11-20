@@ -195,10 +195,10 @@ export default function PrivacyPage() {
             inaccurate, out of date, incomplete, irrelevant or misleading,
             please email us at{" "}
             <a
-              href="mailto:hello@clayora.com.au"
+              href="mailto:clayorastudios@gmail.com"
               className={styles.link}
             >
-              hello@clayora.com.au
+              clayorastudios@gmail.com
             </a>
             .
           </p>
@@ -217,10 +217,10 @@ export default function PrivacyPage() {
             If you have any complaints about our privacy practices, please feel
             free to send in details of your complaints to{" "}
             <a
-              href="mailto:hello@clayora.com.au"
+              href="mailto:clayorastudios@gmail.com"
               className={styles.link}
             >
-              hello@clayora.com.au
+              clayorastudios@gmail.com
             </a>
             . We take complaints very seriously and will respond shortly after
             receiving written notice of your complaint.

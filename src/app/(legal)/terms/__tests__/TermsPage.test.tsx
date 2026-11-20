@@ -49,11 +49,11 @@ describe("TermsPage", () => {
   it("renders the contact email links with correct href", () => {
     render(<TermsPage />);
     const emailLinks = screen.getAllByRole("link", {
-      name: /clayora\.studios@gmail\.com/i,
+      name: /clayorastudios@gmail\.com/i,
     });
     expect(emailLinks.length).toBeGreaterThanOrEqual(3);
     emailLinks.forEach((link) => {
-      expect(link).toHaveAttribute("href", "mailto:clayora.studios@gmail.com");
+      expect(link).toHaveAttribute("href", "mailto:clayorastudios@gmail.com");
     });
   });
 });

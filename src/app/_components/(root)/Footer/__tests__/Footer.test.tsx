@@ -31,9 +31,9 @@ describe("Footer", () => {
 
   it("renders the email contact link", () => {
     render(<Footer />);
-    const emailLink = screen.getByRole("link", { name: /hello@clayora\.com/i });
+    const emailLink = screen.getByRole("link", { name: /clayorastudios@gmail\.com/i });
     expect(emailLink).toBeInTheDocument();
-    expect(emailLink).toHaveAttribute("href", "mailto:hello@clayora.com.au");
+    expect(emailLink).toHaveAttribute("href", "mailto:clayorastudios@gmail.com");
   });
 
   it("renders the phone contact link", () => {

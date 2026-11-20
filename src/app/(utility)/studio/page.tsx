@@ -218,12 +218,12 @@ export default function StudioPage() {
             </li>
             <li>
               <a
-                href="mailto:clayora.studios@gmail.com"
+                href="mailto:clayorastudios@gmail.com"
                 className={styles.contactLink}
                 aria-label="Email Clayora"
               >
                 <MailIcon />
-                clayora.studios@gmail.com
+                clayorastudios@gmail.com
               </a>
             </li>
             <li>

@@ -55,11 +55,11 @@ describe("PrivacyPage", () => {
   it("renders the email links with correct href", () => {
     render(<PrivacyPage />);
     const emailLinks = screen.getAllByRole("link", {
-      name: /hello@clayora\.com\.au/i,
+      name: /clayorastudios@gmail\.com/i,
     });
     expect(emailLinks.length).toBeGreaterThanOrEqual(2);
     emailLinks.forEach((link) => {
-      expect(link).toHaveAttribute("href", "mailto:hello@clayora.com.au");
+      expect(link).toHaveAttribute("href", "mailto:clayorastudios@gmail.com");
     });
   });
 
